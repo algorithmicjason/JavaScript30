@@ -58,6 +58,45 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  ////1 logging the event (ARROW FUNCTION)
+  function playSound(e) {
+    let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    // let key = document.getElementsByClassName(`key`)
+    let key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    if (!audio) return //stops the function from running
+    audio.currentTime = 0; // rewind the timer back to the start (for multiple hits)
+    audio.play()
+    key.classList.add('playing');
+  }
+
+  function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  window.addEventListener('keydown', playSound);
+
+
+////2 event listener that runs a function (REGULAR FUNC)
+// const functionWhatsGoingOn = function () {
+//   console.log('the click on the event listener triggers this function'
+//   + ' which console logs this setence explanation.')
+// }
+
+// document.addEventListener('click', functionWhatsGoingOn)
+ ////2\\  REMEMBER THE FUNCTION HAS TO BE INITIALIZED BEFORE THE EVENT LISTENER CAN BE CALLED
+
+
+ 
+
+
+////10// locating the Element through Id
+  // let a = document.getElementById('a')
+////10\\
 
 </script>
 
