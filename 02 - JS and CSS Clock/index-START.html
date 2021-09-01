@@ -62,13 +62,52 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%; /* pivot points by default it's 50%... this is the side of the hand the hand will turn // the origin is originally turned from the middle of the hand but 100% makes the right side of the hand stay & it swings or rotates from the left side. */
+      transform: rotate(90deg); /* divs are a block and run left to right... we use this because the initial degree was at a 9 o'clock and we need it to start at a 12 o'clock */
+      transition: 0.05s; /* the time is takes one hand to get to its new desired value */
+      transition-timing-function: cubic-bezier(0.21, 0.91, 1, 1); /* bez-e-ay */
+
     }
+    .second-hand{
+      background-color: red;
+      height: 3px;
+      transition: none;
+    }
+    .hour-hand{
+     height: 10px;
+    }
+    
 
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.min-hand')
+    const hourHand = document.querySelector('.hour-hand')
 
+    function setDate() {
+      const now = new Date();
+      // console.log(now)
 
+      const seconds = now.getSeconds();
+      const secondsDegrees = (90 + (seconds / 60) * 360);
+      // console.log(secondsDegrees)
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+      secondHand.style.color = 'red';
+
+      const minutes = now.getMinutes();
+      const minutesDegree = (90 + (minutes / 60) * 360);
+      minuteHand.style.transform = `rotate(${minutesDegree}deg)`;
+
+      const hour = now.getHours();
+      const hourDegrees = (90 + (hour / 12) * 360);
+      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+    
+    setInterval(setDate, 1000); /* we run the setDate function every second 1000 milliseconds which is 1 second
+  
+/* secondTry do a digital clock */
   </script>
 </body>
 </html>
+  
