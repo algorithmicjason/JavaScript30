@@ -37,28 +37,59 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const inventors1500 = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599)
+    console.table(inventors1500)
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const arrFullNames = inventors.map(inventor => console.log(inventor.first, inventor.last))
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const oldestToYoungest = inventors.sort((a, b) => a.year > b.year ? 1 : -1)
+    console.table(oldestToYoungest)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const totalYearsLived = inventors.reduce((total, inventor) => total + (inventor.passed - inventor.year), 0)
+    console.log(`${totalYearsLived} total years lived`)
 
     // 5. Sort the inventors by years lived
+    const sortedByYearsLived = inventors.sort((a, b) => (a.passed - a.year) > (b.passed - b.year) ? -1 : 1);
+    console.table(sortedByYearsLived)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
+
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    // sortedByLastName = people.sort((a,b) => a < b ? -1 : 1)
+    // console.table(sortedByLastName)
+
+    const peopleByLastName = people.sort((firstPerson, secondPerson) => {
+      const [firstFirstName, firstLastName] = firstPerson.split(", ")
+      const [secondFirstName, secondLastName] = secondPerson.split(", ")
+
+      return firstPerson > secondPerson ? 1 : -1
+    })
+    console.log(peopleByLastName)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    
+    let reducedData = data.reduce(function(obj, transportationType) {
+      if (!obj[transportationType]){
+      obj[transportationType] = 0;
+       }  
+      obj[transportationType]++;
+      return obj
+    }, {})
+
+    // let reducedData = data.reduce((obj, transportationType) => obj[transportationType] ? obj[transportationType] += 1 : obj[transportationType] = 0, {});
+    console.log(reducedData)
 
   </script>
 </body>
