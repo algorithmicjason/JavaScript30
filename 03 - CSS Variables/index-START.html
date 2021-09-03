@@ -64,22 +64,13 @@
       
     function updateInputs(){
       let suffix = this.dataset.sizing || '';
-      // debugger
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
-      // console.log(this)
-      // console.log(`${--this.name}`)
-      // console.log(--this.name)
-      // console.log(suffix)
-      //update the variable 
     }
 
+    //Either one of these work
     inputs.forEach(input => input.addEventListener('change', updateInputs))
     inputs.forEach(input => input.addEventListener('mousemove', updateInputs))
 
-
-
-    
-    //once you get the change value youre going to update the css variable's value
   </script>
 
 </body>
