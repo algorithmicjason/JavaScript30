@@ -65,32 +65,39 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    // sortedByLastName = people.sort((a,b) => a < b ? -1 : 1)
-    // console.table(sortedByLastName)
 
-    const peopleByLastName = people.sort((firstPerson, secondPerson) => {
-      const [firstFirstName, firstLastName] = firstPerson.split(", ")
-      const [secondFirstName, secondLastName] = secondPerson.split(", ")
-
-      return firstPerson > secondPerson ? 1 : -1
-    })
-    console.log(peopleByLastName)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-    
-    let reducedData = data.reduce(function(obj, transportationType) {
-      if (!obj[transportationType]){
-      obj[transportationType] = 0;
-       }  
-      obj[transportationType]++;
-      return obj
-    }, {})
 
-    // let reducedData = data.reduce((obj, transportationType) => obj[transportationType] ? obj[transportationType] += 1 : obj[transportationType] = 0, {});
-    console.log(reducedData)
-
-  </script>
+    </script>
 </body>
 </html>
+
+
+<!-- let alphabeticallyOrganizedPeople = people.sort((currentPerson, nextPerson) =>{
+  let [lastCurrentPerson, firstCurrentPerson] = currentPerson.split(', ')
+  let [lastNextPerson, firstNextPerson] = nextPerson.split(', ')
+
+  
+  return lastCurrentPerson > lastNextPerson ? 1 : -1;
+}, {})
+
+console.table(alphabeticallyOrganizedPeople)
+
+
+
+
+// 8. Reduce Exercise
+// Sum up the instances of each of these
+const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+let reducedDat = data.reduce(function(obj, item) {
+  if(!obj[item]){
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj
+}, {})
+
+console.log(reducedDat) -->
