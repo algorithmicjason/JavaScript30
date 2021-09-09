@@ -46,7 +46,7 @@
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    const oldestToYoungest = inventors.sort((a, b) => a.year > b.year ? 1 : -1)
+    const oldestToYoungest = inventors.sort((a, b) => a.year < b.year ? -1 : 1)
     console.table(oldestToYoungest)
 
     // Array.prototype.reduce()
@@ -65,10 +65,54 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let peopleSorted = people.sort((a, b) =>{
+      const [aLast, aFirst] = a.split(', ')
+      const [bLast, bFirst] = b.split(', ')
 
+      return aLast > bLast ? 1 : -1;
+    }) 
+
+    console.log(peopleSorted)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    let dataReduced = data.reduce(function(obj, transportation) {
+      if(!obj[transportation]){
+        obj[transportation] = 0;
+      }
+      obj[transportation] ++;
+
+      return obj
+    }, {})
+
+    console.log(dataReduced)
+
+
+
+
+
+
+
+
+
+
+
+    // arr10 = ['a', 'b', 'c', 'd']
+    // arr11 = ['a', 'd', 'c', 'b']
+    // arr12 = ['a', 'b', 'c', 'b']
+
+    // function sortArr(arr) { 
+    //   arr.sort((a, b)
+    //   )}
+    // let sortArr = (arr) => {
+    //   Object.assign({}, ...arr)
+    //   }
+
+
+    //   console.log('where are we')
+    //   sortArr(arr10)
 
     </script>
 </body>
@@ -101,3 +145,43 @@ let reducedDat = data.reduce(function(obj, item) {
 }, {})
 
 console.log(reducedDat) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+let organizedPeople = people.sort(function(personA, personB) {
+  const [personALast, personAFirst] = personA.split(',')
+  const [personBLast, personBFirst] = personB.split(',')
+
+  return personALast > personBLast ? 1 : -1
+}, {})
+
+console.table(organizedPeople)
+console.log('look here duffis')
+console.log(people) -->
+
+
+<!-- 
+
+
+let reducedData = data.reduce(function(obj, item) {
+  if(!obj[item]){
+    obj[item] = 0;
+  }
+  obj[item]++;
+  return obj
+}, {})
+
+console.log(reducedData)  -->
